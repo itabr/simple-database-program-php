@@ -1,0 +1,15 @@
+How to run sql files:
+
+1) Have files in vm-shared
+
+2) Navigate to www directory in virtual machine
+
+3) run command: mysql
+
+4) Change database with USE TEST
+
+5) run command: SOURCE <filename>
+   ex: SOURCE create.sql
+   start with create, then load, then queries
+   the first statement in queries takes like a minute to run.
+  
