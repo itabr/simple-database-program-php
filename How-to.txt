@@ -21,8 +21,9 @@ How to run PHP server:
 
 2) Navigate to www directory in virtual machine
 
-3) Run   php -S 0.0.0.0:8000 query.php
+3) use ifconfig to get the ip address
 
-4) use ifconfig to get the ip address
+4) Run php -S 0.0.0.0:8000 query.php
+   to run it on localhost use: php -S localhost:8000 query.php
 
 5) put the ip address in browser http:// <IP address> :8000/
