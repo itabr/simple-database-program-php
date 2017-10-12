@@ -1,4 +1,5 @@
-# simple-database-program-phpProject 1A
+# simple-database-program-php
+Project 1A
 Therese Horey
 Ilya Tabriz
 
