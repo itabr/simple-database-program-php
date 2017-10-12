@@ -17,7 +17,7 @@ How to run sql files:
 
 How to run PHP server:
 
-1) Have files in vm-shared
+1) Have files in vm-shared make sure the network for vm is set to bridge
 
 2) Navigate to www directory in virtual machine
 

@@ -1,6 +1,6 @@
 Project 1A Readme
 Therese Horey
-
+Ilya Tabriz
 
 
 Contains files:
@@ -43,5 +43,4 @@ How to run PHP server:
    to run it on localhost use: php -S localhost:8000 query.php
 
 5) put the ip address in browser http:// <IP address> :8000/
-
 
