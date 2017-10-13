@@ -2,7 +2,7 @@
 <head><title> CS143 Project 1 </title></head>
 <body>
 
-<p> Project by Ilya Tabriz and Therese </p>
+<p> Project by Ilya Tabriz and Therese Horey </p>
 
 <p> Type an SQL query in the following box: </p>
 
@@ -32,19 +32,23 @@
 	// execute query inside database
 	$rs = mysql_query($dbQuery, $link) or die(mysql_error());
 
-	echo "<h3>Results from database:</h3>" ;
+	$num_rows = mysql_num_rows($rs);
 
-	echo "<table border=2 ><tr align='left'>" ;
+	echo "<p>Results from database:</p>" ;
+
+	echo "<table border=1 ><tr>" ;
 
 	// echo header fields
 
 	for ($x = 0; $x < mysql_num_fields($rs); $x++) {
-		echo '<td><b>' , mysql_fetch_field($rs, $x)->name , '</b></td>';
+		echo '<th>' , mysql_fetch_field($rs, $x)->name , '</th>';
 	}
+
+	echo "</tr>" ;
 
 	while($row = mysql_fetch_row($rs)){
 
-		echo '<tr align="left">';
+		echo '<tr>';
 
 		for ($z = 0; $z < count($row); $z++) {
 
@@ -59,6 +63,7 @@
 		echo '</tr>';
 
 	}
+
 
 	mysql_free_result($rs);
 
