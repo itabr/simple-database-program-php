@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -16,11 +17,11 @@
 
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#"> CS143 DataBase Query System </a>
+		<a class="navbar-brand" href="index.php"> CS143 DataBase Query System </a>
 		<a class="navbar-brand" style="color: #C0C0C0;"> <b>Ilya Tabriz &nbsp;&nbsp; and &nbsp;&nbsp; Therese Horey</b> </a>
 	</nav>
 
-	<div class="container-fluid">
+	<div class="container-fluid" style="background-color: #C0C0C0;">
 		<div class="row">
 			<div class="col" style="margin: 10px 0px 10px 0px;">
 				<a>
@@ -91,7 +92,25 @@
 		</div>
 	</div>
 
+	<div style="text-align: center;">
+
+	<h1 style="margin: 20px;">
+		Welcome to CS143 Query System!
+	</h1>
+	<h5 style="margin: 20px;">
+		select from the list above and start going through the database
+	</h5>
+
+	<i class="fa fa-database" aria-hidden="true" style="margin: 20px; font-size: 272px;"></i>
+
+
+	</div>
 </div>
+
+
+
+
+
 
 
 
