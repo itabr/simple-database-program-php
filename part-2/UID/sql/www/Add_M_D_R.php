@@ -5,7 +5,9 @@
 <title>CS143 DataBase</title>
 <meta charset="utf-8">
 <style>
-<?php include 'stylesheet/bootstrap.min.css';?>
+
+/*
+<?php include 'stylesheet/bootstrap.min.css';?>*/
 </style>
 </head>
 
@@ -35,29 +37,29 @@
 			</div>
 			<div class="row">
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Add_actor.php">
+					<a href="index.php">
 						Add Actor/Director
 					</a>
 				</div>
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Show_A.php">
+					<a href="index.php">
 						Show Actor Information
 					</a>
 				</div>
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=search.php">
+					<a href="index.php">
 						Search/Actor Movie
 					</a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Add_movie.php">
+					<a href="index.php">
 						Add Movie Information
 					</a>
 				</div>
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Show_M.php">
+					<a href="index.php">
 						Show Movie Information
 					</a>
 				</div>
@@ -68,7 +70,7 @@
 			</div>
 			<div class="row">
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="Add_M_A_R.php">
+					<a href="index.php">
 						Add Movie/Actor Relation
 					</a>
 				</div>
@@ -79,7 +81,7 @@
 			</div>
 			<div class="row">
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="Add_M_D_R.php">
+					<a href="index.php">
 						Add Movie/Director Relation
 					</a>
 				</div>
@@ -87,15 +89,7 @@
 		</div>
 	</div>
 
-	<?php
-		$page = $_GET['page'];	/* gets the variable $page */
-		if (!empty($page)) {
-			include($page);
-		} 	/* if $page has a value, include it */
-		else {
-			include('welcome.php');
-		} 	/* otherwise, include the default page */
-	?>
+
 
 
 
