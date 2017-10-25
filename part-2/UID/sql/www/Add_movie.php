@@ -1,6 +1,10 @@
+<?php
+	include('index.php');
+?>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3>Add new Movie</h3>
-    <form method="GET" action="#">
+    <form method="GET" action="Add_movie.php">
 	   <div class="form-group">
 		<label for="title">Title:</label>
 		<input type="text" class="form-control" placeholder="Text input" name="title">
@@ -50,5 +54,48 @@
     </form>
 
 
-
 </div>
+
+<?php
+	$page = 'Add_movie.php';
+	// establish connection
+	$link = mysql_connect("localhost", "cs143", "", "CS143");
+	if (!$link) {
+	    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+	    echo "Debugging errno: " . mysql_connect_errno() . PHP_EOL;
+	    echo "Debugging error: " . mysql_connect_error() . PHP_EOL;
+	    exit;
+	}
+
+	$company = $_GET["company"];
+	$title = $_GET["title"];
+	$year = $_GET["year"];
+	$rate = $_GET["rate"];
+	$Action = $_GET["Action"];
+	$Adult = $_GET["Adult"];
+	$Adventure = $_GET["Adventure"];
+	$Animation = $_GET["Animation"];
+	$Comedy = $_GET["Comedy"];
+	$Crime = $_GET["Crime"];
+	$Documentary = $_GET["Documentary"];
+	$Drama = $_GET["Drama"];
+	$Family = $_GET["Family"];
+	$Fantasy = $_GET["Fantasy"];
+	$Horror = $_GET["Horror"];
+	$Musical = $_GET["Musical"];
+	$Mystery = $_GET["Mystery"];
+	$Romance = $_GET["Romance"];
+
+	$Sci_Fi = $_GET["Sci-Fi"];
+	$Short = $_GET["Short"];
+	$Thriller = $_GET["Thriller"];
+	$War = $_GET["War"];
+	$Western = $_GET["Western"];
+
+
+
+
+	echo "<p>Results from database:</p>" ;
+
+	mysql_close($link);
+?>

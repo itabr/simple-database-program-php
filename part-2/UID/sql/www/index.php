@@ -35,29 +35,29 @@
 			</div>
 			<div class="row">
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Add_actor.php">
+					<a href="Add_actor.php">
 						Add Actor/Director
 					</a>
 				</div>
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Show_A.php">
+					<a href="Show_A.php">
 						Show Actor Information
 					</a>
 				</div>
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=search.php">
+					<a href="search.php">
 						Search/Actor Movie
 					</a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Add_movie.php">
+					<a href="Add_movie.php">
 						Add Movie Information
 					</a>
 				</div>
 				<div class="col" style="margin: 5px 0px 5px 0px;">
-					<a href="index.php?page=Show_M.php">
+					<a href="Show_M.php">
 						Show Movie Information
 					</a>
 				</div>
@@ -86,17 +86,6 @@
 			</div>
 		</div>
 	</div>
-
-	<?php
-		$page = $_GET['page'];	/* gets the variable $page */
-		if (!empty($page)) {
-			include($page);
-		} 	/* if $page has a value, include it */
-		else {
-			include('welcome.php');
-		} 	/* otherwise, include the default page */
-	?>
-
 
 
 
