@@ -11,5 +11,123 @@
 	 <input type="submit" value="Click Me!"class="btn btn-default" style="margin-bottom:10px">
   </form>
   <!--php query start from here -->
+  <?php
+
+	// establish connection
+	$link = mysql_connect("localhost", "cs143", "", "CS143");
+
+	if (!$link) {
+	    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+	    echo "Debugging errno: " . mysql_connect_errno() . PHP_EOL;
+	    echo "Debugging error: " . mysql_connect_error() . PHP_EOL;
+	    exit;
+	}
+
+	// get the text from search box
+	$search = $_GET["result"];
+	if($search != "")
+	{
+	$terms = explode(" ", $search);
+	$size = count($terms);
+	$string = "";
+	//print_r($terms);
+	for ($i = 0; $i < $size; $i++)
+	{
+		//one term
+		if($i == 0 && $size == 1)
+			$string = $string . "'%" . $terms[$i] . "%'";
+		//first term multiple terms
+		else if($i == 0)
+			$string = $string . "'%" . $terms[$i] . "%";
+		//middle terms
+		else if($i != $size-1)
+			$string = $string . "%" . $terms[$i] . "%";
+		//last term
+		else
+			$string = $string . "%" . $terms[$i] . "%'";
+	}
+
+	//echo $terms[0];
+	//echo $terms[$i-1];
+	//echo $string;
+	//build mysql query for Actor table
+	$dbQueryActor = "SELECT first, last, dob FROM CS143.Actor WHERE CONCAT(first, last) LIKE " . $string . ";";
+	echo $dbQueryActor;
+	// execute query inside database
+	$rs = mysql_query($dbQueryActor, $link) or die(mysql_error());
+
+	$num_rows = mysql_num_rows($rs);
+
+	echo "<p>Results from database:</p>" ;
+
+	echo "<table border=1 ><tr>" ;
+
+	// echo header fields
+
+	for ($x = 0; $x < mysql_num_fields($rs); $x++) {
+		echo '<th>' , mysql_fetch_field($rs, $x)->name , '</th>';
+	}
+
+	echo "</tr>" ;
+
+	while($row = mysql_fetch_row($rs)){
+
+		echo '<tr>';
+
+		for ($z = 0; $z < count($row); $z++) {
+
+			if(current($row)==NULL)
+				echo '<td>N/A</td>';
+			else
+				echo '<td>' , current($row) , '</td>';
+
+			next($row);
+		}
+
+		echo '</tr>';
+
+	}
+	
+	$dbQueryMovie = "SELECT title, year FROM CS143.Movie WHERE title LIKE " . $string . ";";
+	echo $dbQueryMovie;
+	// execute query inside database
+	$rs = mysql_query($dbQueryMovie, $link) or die(mysql_error());
+
+	$num_rows = mysql_num_rows($rs);
+
+	echo "<table border=1 ><tr>" ;
+
+	// echo header fields
+
+	for ($x = 0; $x < mysql_num_fields($rs); $x++) {
+		echo '<th>' , mysql_fetch_field($rs, $x)->name , '</th>';
+	}
+
+	echo "</tr>" ;
+
+	while($row = mysql_fetch_row($rs)){
+
+		echo '<tr>';
+
+		for ($z = 0; $z < count($row); $z++) {
+
+			if(current($row)==NULL)
+				echo '<td>N/A</td>';
+			else
+				echo '<td>' , current($row) , '</td>';
+
+			next($row);
+		}
+
+		echo '</tr>';
+
+	}
+
+	}
+	mysql_free_result($rs);
+
+	mysql_close($link);
+
+?>
 <!--php query end from here -->
 </div>
