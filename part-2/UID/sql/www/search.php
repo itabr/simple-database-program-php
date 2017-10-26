@@ -51,76 +51,90 @@
 	//echo $terms[$i-1];
 	//echo $string;
 	//build mysql query for Actor table
-	$dbQueryActor = "SELECT first, last, dob FROM CS143.Actor WHERE CONCAT(first, last) LIKE " . $string . ";";
+	$dbQueryActor = "SELECT * FROM CS143.Actor WHERE CONCAT(first, last) LIKE " . $string . ";";
 	echo $dbQueryActor;
 	// execute query inside database
 	$rs = mysql_query($dbQueryActor, $link) or die(mysql_error());
 
 	$num_rows = mysql_num_rows($rs);
+	if($num_rows != 0)
+	{
+		echo "<p>Matching actors:</p>" ;
 
-	echo "<p>Results from database:</p>" ;
+		echo "<table border=1 ><tr>" ;
 
-	echo "<table border=1 ><tr>" ;
+		// echo header fields
 
-	// echo header fields
-
-	for ($x = 0; $x < mysql_num_fields($rs); $x++) {
-		echo '<th>' , mysql_fetch_field($rs, $x)->name , '</th>';
-	}
-
-	echo "</tr>" ;
-
-	while($row = mysql_fetch_row($rs)){
-
-		echo '<tr>';
-
-		for ($z = 0; $z < count($row); $z++) {
-
-			if(current($row)==NULL)
-				echo '<td>N/A</td>';
+		for ($x = 0; $x < 2; $x++) {
+			if($x == 0)
+				echo '<th>' , "Name" , '</th>';
 			else
-				echo '<td>' , current($row) , '</td>';
-
-			next($row);
+				echo '<th>' , "Date of Birth" , '</th>';
 		}
 
-		echo '</tr>';
+		echo "</tr>" ;
 
+		while($row = mysql_fetch_row($rs)){
+
+			echo '<tr>';
+			
+			//Name first and last
+			echo '<td>' , '<a href=Show_A.php>' , $row[2] , " " , $row[1] , '</a>', '</td>';
+			
+			//Date of birth
+			echo '<td>' , '<a href=Show_A.php>' , $row[4] , '</a>', '</td>';
+
+			/*for ($z = 0; $z < count($row); $z++) {
+
+				if(current($row)==NULL)
+					echo '<td>N/A</td>';
+				else
+					echo '<td>' , "<a href=" , current($row) , '</td>';
+
+				next($row);
+			}*/
+
+			echo '</tr>';
+
+		}
 	}
 	
-	$dbQueryMovie = "SELECT title, year FROM CS143.Movie WHERE title LIKE " . $string . ";";
+	$dbQueryMovie = "SELECT * FROM CS143.Movie WHERE title LIKE " . $string . ";";
 	echo $dbQueryMovie;
 	// execute query inside database
 	$rs = mysql_query($dbQueryMovie, $link) or die(mysql_error());
 
 	$num_rows = mysql_num_rows($rs);
+	if($num_rows != 0)
+	{
+		echo "<p>Matching movies:</p>" ;
+				
+		echo "<table border=1 ><tr>" ;
 
-	echo "<table border=1 ><tr>" ;
+		// echo header fields
 
-	// echo header fields
-
-	for ($x = 0; $x < mysql_num_fields($rs); $x++) {
-		echo '<th>' , mysql_fetch_field($rs, $x)->name , '</th>';
-	}
-
-	echo "</tr>" ;
-
-	while($row = mysql_fetch_row($rs)){
-
-		echo '<tr>';
-
-		for ($z = 0; $z < count($row); $z++) {
-
-			if(current($row)==NULL)
-				echo '<td>N/A</td>';
+		for ($x = 0; $x < 2; $x++) {
+			if($x == 0)
+				echo '<th>' , "Title" , '</th>';
 			else
-				echo '<td>' , current($row) , '</td>';
-
-			next($row);
+				echo '<th>' , "Year" , '</th>';
 		}
 
-		echo '</tr>';
+		echo "</tr>" ;
 
+		while($row = mysql_fetch_row($rs)){
+
+			echo '<tr>';
+			
+			//Movie title
+			echo '<td>' , '<a href=Show_M.php>' , $row[1] , '</a>', '</td>';
+			
+			//Year
+			echo '<td>' , '<a href=Show_M.php>' , $row[2] , '</a>', '</td>';
+
+			echo '</tr>';
+
+		}
 	}
 
 	}
