@@ -79,10 +79,10 @@
 			echo '<tr>';
 			
 			//Name first and last
-			echo '<td>' , '<a href=Show_A.php>' , $row[2] , " " , $row[1] , '</a>', '</td>';
+			echo '<td>' , '<a href=Show_A.php?id=' , $row[0] , '>' , $row[2] , " " , $row[1] , '</a>', '</td>';
 			
 			//Date of birth
-			echo '<td>' , '<a href=Show_A.php>' , $row[4] , '</a>', '</td>';
+			echo '<td>' , '<a href=Show_A.php?id=' , $row[0] , '>' , $row[4] , '</a>', '</td>';
 
 			/*for ($z = 0; $z < count($row); $z++) {
 
