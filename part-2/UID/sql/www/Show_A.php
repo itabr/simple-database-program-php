@@ -74,10 +74,13 @@ if($num_rows != 0)
 	}
 }
 
-$dbQueryActorMovieInfo = "SELECT DISTINCT title, role FROM CS143.MovieActor, CS143.Movie WHERE mid = CS143.Movie.id AND aid = " . $search . ";";
+$dbQueryActorMovieInfo = "SELECT DISTINCT title, role, mid FROM CS143.MovieActor, CS143.Movie WHERE mid = CS143.Movie.id AND aid = " . $search . ";";
 //echo $dbQueryActorMovieInfo;
 // execute query inside database
 $rs = mysql_query($dbQueryActorMovieInfo, $link) or die(mysql_error());
+$num_rows = mysql_num_rows($rs);
+if($num_rows != 0)
+{
 echo "<p>Actor's Movies and Role:</p>" ;
 
 	echo "<table border=1 ><tr>" ;
@@ -86,9 +89,9 @@ echo "<p>Actor's Movies and Role:</p>" ;
 
 	for ($x = 0; $x < 2; $x++) {
 		if($x == 0)
-			echo '<th>' , "Title" , '</th>';
-		else
 			echo '<th>' , "Role" , '</th>';
+		else
+			echo '<th>' , "Title" , '</th>';
 	}
 
 	echo "</tr>";
@@ -97,15 +100,17 @@ echo "<p>Actor's Movies and Role:</p>" ;
 
 		echo '<tr>';
 		
-		//Movie title
-		echo '<td>' , $row[0] , '</td>';
-		
 		//Movie role
-		echo '<td>' , $row[1] , '</td>';
+		echo '<td>' , '"' , $row[1] , '"' , '</td>';
+		
+		//Movie title
+		echo '<td>' , '<a href=Show_M.php?id=' , $row[2] , '>' , $row[0] , '</a>', '</td>';
 
 		echo '</tr>';
 
 	}
+	
+}
 mysql_free_result($rs);
 
 mysql_close($link);

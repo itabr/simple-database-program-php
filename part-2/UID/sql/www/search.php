@@ -127,10 +127,10 @@
 			echo '<tr>';
 			
 			//Movie title
-			echo '<td>' , '<a href=Show_M.php>' , $row[1] , '</a>', '</td>';
+			echo '<td>' , '<a href=Show_M.php?id=' , $row[0] , '>' , $row[1] , '</a>', '</td>';
 			
 			//Year
-			echo '<td>' , '<a href=Show_M.php>' , $row[2] , '</a>', '</td>';
+			echo '<td>' , '<a href=Show_M.php?id=' , $row[0] , '>' , $row[2] , '</a>', '</td>';
 
 			echo '</tr>';
 
