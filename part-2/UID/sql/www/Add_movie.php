@@ -71,31 +71,41 @@
 	$title = $_GET["title"];
 	$year = $_GET["year"];
 	$rate = $_GET["rate"];
-	$Action = $_GET["Action"];
-	$Adult = $_GET["Adult"];
-	$Adventure = $_GET["Adventure"];
-	$Animation = $_GET["Animation"];
-	$Comedy = $_GET["Comedy"];
-	$Crime = $_GET["Crime"];
-	$Documentary = $_GET["Documentary"];
-	$Drama = $_GET["Drama"];
-	$Family = $_GET["Family"];
-	$Fantasy = $_GET["Fantasy"];
-	$Horror = $_GET["Horror"];
-	$Musical = $_GET["Musical"];
-	$Mystery = $_GET["Mystery"];
-	$Romance = $_GET["Romance"];
 
-	$Sci_Fi = $_GET["Sci-Fi"];
-	$Short = $_GET["Short"];
-	$Thriller = $_GET["Thriller"];
-	$War = $_GET["War"];
-	$Western = $_GET["Western"];
+	$genre = $_GET["genre"];
+
+	$g = "";
+
+	if ($title) {
 
 
+	$rs = mysql_query("SELECT * from CS143.MaxMovieID;", $link) or die(mysql_error());
+	$mid = mysql_fetch_row($rs)[0] + 1;
+
+	$q = "INSERT INTO CS143.Movie (id , title, year, rating , company ) VALUES (" . $mid . ",'" . $title ."','" . $year ."','". $rate. "','". $company."');";
+	$rs = mysql_query($q, $link) or die(mysql_error());
 
 
-	echo "<p>Results from database:</p>" ;
+	foreach($genre as $i) {
+		$q = "INSERT INTO CS143.MovieGenre (mid , genre ) VALUES (" . $mid . ",'" . $i . "');";
+		$rs = mysql_query($q, $link) or die(mysql_error());
+	}
+
+
+	$rs = mysql_query("UPDATE CS143.MaxMovieID SET id = id + 1 WHERE id = $mid - 1;", $link) or die(mysql_error());
+
+	if($rs == 1){
+		echo "movie added to database successfully";
+	}
+	}
+
+
+
+
+
+
+
+
 
 	mysql_close($link);
 ?>
