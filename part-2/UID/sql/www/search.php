@@ -37,16 +37,16 @@
 	{
 		//one term
 		if($i == 0 && $size == 1)
-			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'";
+			$string = $string . "CONCAT(first, ' ', last) LIKE " . "'%" . $terms[$i] . "%'";
 		//first term multiple terms
 		else if($i == 0)
-			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'" . " AND ";
+			$string = $string . "CONCAT(first, ' ', last) LIKE " . "'%" . $terms[$i] . "%'" . " AND ";
 		//middle terms
 		else if($i != $size-1)
-			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'" . " AND " ;
+			$string = $string . "CONCAT(first, ' ', last) LIKE " . "'%" . $terms[$i] . "%'" . " AND " ;
 		//last term
 		else
-			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'";
+			$string = $string . "CONCAT(first, ' ', last) LIKE " . "'%" . $terms[$i] . "%'";
 	}
 
 	//echo $terms[0];

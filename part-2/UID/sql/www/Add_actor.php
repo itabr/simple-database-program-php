@@ -87,9 +87,9 @@
 							$rs = mysql_query($q, $link) or die(mysql_error());
 						}
 						$rs = mysql_query("UPDATE CS143.MaxPersonID SET id = id + 1 WHERE id = $id - 1;", $link) or die(mysql_error());
-						echo $rs;
+						//echo $rs;
 
-						echo $q;
+						//echo $q;
 
 						if($rs==1){
 							echo "person added to database successfully";
