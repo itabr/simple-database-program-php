@@ -1,15 +1,15 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
-
+<br>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
- <h3><b> Movie Information Page  :</b></h3>
+ <h3><b> Movie Information Page:</b></h3>
 <hr>
-   <hr>
-  <label for="search_input">Search:</label>
+   <h4>
+  <label for="search_input">Search:</label></h4>
  <form class="form-group" action="search.php" method ="GET" id="usrform">
      <input type="text" id="search_input"class="form-control" placeholder="Search..." name="result"><br>
-     <input type="submit" value="Click Me!" class="btn btn-default" style="margin-bottom:10px">
+     <input type="submit" value="Click Me!" class="btn btn-secondary" style="margin-bottom:10px">
  </form>
  <?php
 
@@ -41,7 +41,7 @@ if($num_rows != 0)
 while($row = mysql_fetch_row($rs))
 {
 	echo '<a href=Add_Review.php?id=' , $search , '>' , "Add a review for this movie" ,  '</a>';
-	echo "<p>Movie Information:</p>" ;
+	echo "<h4>Movie Information:</h4>" ;
 
 	echo "<p>" ;
 		
@@ -98,12 +98,12 @@ $rs = mysql_query($dbQueryMovieActorInfo, $link) or die(mysql_error());
 $num_rows = mysql_num_rows($rs);
 if($num_rows != 0)
 {
-echo "<p>Actors in this movie:</p>" ;
+echo "<h4>Actors in this movie:</h4>" ;
 
-echo "<table border=1 ><tr>" ;
+echo "<table border=1 class = 'table table-hover'><tr>" ;
 
 // echo header fields
-
+echo "<thead class='thead-dark'>";
 for ($x = 0; $x < 2; $x++) {
 	if($x == 0)
 		echo '<th>' , "Name" , '</th>';
@@ -112,7 +112,7 @@ for ($x = 0; $x < 2; $x++) {
 }
 
 echo "</tr>";
-
+echo "</thead>";
 while($row = mysql_fetch_row($rs)){
 
 	echo '<tr>';
@@ -138,7 +138,7 @@ if($num_rows != 0)
 {
 while($row = mysql_fetch_row($rs)){
 
-	echo "<p>User reviews: </p>";
+	echo "<h4>User reviews: </h4>";
 	if($row[1] == 0)
 		echo  "Average score of 0/5 with a total of " , $row[1] , " user scores." ;
 	else
@@ -153,12 +153,12 @@ $rs = mysql_query($dbQueryMovieReviewInfo, $link) or die(mysql_error());
 $num_rows = mysql_num_rows($rs);
 if($num_rows != 0  )
 {
-echo "<p>User comments:</p>" ;
+echo "<h4>User comments:</h4>" ;
 
-echo "<table border=1 ><tr>" ;
+echo "<table border=1 class = 'table table-hover'><tr>" ;
 
 // echo header fields
-
+echo "<thead class='thead-dark'>";
 for ($x = 0; $x < 4; $x++) {
 	if($x == 0)
 		echo '<th>' , "Name" , '</th>';
@@ -171,7 +171,7 @@ for ($x = 0; $x < 4; $x++) {
 }
 
 echo "</tr>";
-
+echo "</thead>";
 while($row = mysql_fetch_row($rs)){
 
 	echo '<tr>';

@@ -1,11 +1,11 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
 
-
+<br>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h3>Add Movie/Director Relation</h3>
-
+			<h3><b>Add Movie/Director Relation:</b></h3>
+<hr>
 			<form method = "POST" action="#">
 				<div class="form-group">
 					<label for="movieid">Movie Title:</label>
@@ -84,7 +84,7 @@
 
 					<br />
 
-					<input type='submit' class="btn btn-default" value='Click me!'>
+					<input type='submit' class="btn btn-secondary" value='Click me!'>
 
 
 					<?php

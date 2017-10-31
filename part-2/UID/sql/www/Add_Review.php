@@ -1,5 +1,5 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -22,7 +22,7 @@
 	<label for="review">Comment:</label>
 	 <textarea name="review" rows="10" cols="30" placeholder=". . ."></textarea>
 	 </div>
-	 <input type="submit" value="Rate it!"class="btn btn-default" style="margin-bottom:10px">
+	 <input type="submit" value="Rate it!"class="btn btn-secondary" style="margin-bottom:10px">
   </form>
   <!--php query start from here -->
   <?php 

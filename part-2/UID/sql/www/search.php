@@ -1,14 +1,16 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
-
+<br>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-  <h3><b> Searching Page :</b></h3>
+  <h3><b> Searching Page:</b></h3>
  <hr>
+ <h4>
   <label for="search_input">Search:</label>
+  </h4>
   <form class="form-group" method ="GET" id="usrform">
 	 <input type="text" id="search_input"class="form-control" placeholder="Search..." name="result"><br>
-	 <input type="submit" value="Click Me!"class="btn btn-default" style="margin-bottom:10px">
+	 <input type="submit" value="Click Me!"class="btn btn-secondary" style="margin-bottom:10px">
   </form>
   <!--php query start from here -->
   <?php
@@ -35,23 +37,23 @@
 	{
 		//one term
 		if($i == 0 && $size == 1)
-			$string = $string . "'%" . $terms[$i] . "%'";
+			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'";
 		//first term multiple terms
 		else if($i == 0)
-			$string = $string . "'%" . $terms[$i] . "%";
+			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'" . " AND ";
 		//middle terms
 		else if($i != $size-1)
-			$string = $string . "%" . $terms[$i] . "%";
+			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'" . " AND " ;
 		//last term
 		else
-			$string = $string . "%" . $terms[$i] . "%'";
+			$string = $string . "CONCAT(first, last) LIKE " . "'%" . $terms[$i] . "%'";
 	}
 
 	//echo $terms[0];
 	//echo $terms[$i-1];
 	//echo $string;
 	//build mysql query for Actor table
-	$dbQueryActor = "SELECT * FROM CS143.Actor WHERE CONCAT(first, last) LIKE " . $string . ";";
+	$dbQueryActor = "SELECT * FROM CS143.Actor WHERE " . $string . ";";
 	//echo $dbQueryActor;
 	// execute query inside database
 	$rs = mysql_query($dbQueryActor, $link) or die(mysql_error());
@@ -60,21 +62,19 @@
 	if($num_rows != 0)
 	{
 		echo "<div>";
-		echo "<p>Matching actors:</p>" ;
-
-		echo "<table border=1 ><tr>" ;
+		echo "<h4>Matching actors:</h4>" ;
+		echo "<table border=1 class = 'table table-hover'><tr>" ;
 
 		// echo header fields
-
+		echo "<thead class='thead-dark'>";
 		for ($x = 0; $x < 2; $x++) {
 			if($x == 0)
 				echo '<th>' , "Name" , '</th>';
 			else
 				echo '<th>' , "Date of Birth" , '</th>';
 		}
-
 		echo "</tr>" ;
-
+		echo "</thead>";
 		while($row = mysql_fetch_row($rs)){
 
 			echo '<tr>';
@@ -102,7 +102,25 @@
 		echo "</div>";
 	}
 	
-	$dbQueryMovie = "SELECT * FROM CS143.Movie WHERE title LIKE " . $string . ";";
+	$string = "";
+	//print_r($terms);
+	for ($i = 0; $i < $size; $i++)
+	{
+		//one term
+		if($i == 0 && $size == 1)
+			$string = $string . "title LIKE " . "'%" . $terms[$i] . "%'";
+		//first term multiple terms
+		else if($i == 0)
+			$string = $string . "title LIKE " . "'%" . $terms[$i] . "%'" . " AND ";
+		//middle terms
+		else if($i != $size-1)
+			$string = $string . "title LIKE " . "'%" . $terms[$i] . "%'" . " AND " ;
+		//last term
+		else
+			$string = $string . "title LIKE " . "'%" . $terms[$i] . "%'";
+	}
+	
+	$dbQueryMovie = "SELECT * FROM CS143.Movie WHERE " . $string . ";";
 	//echo $dbQueryMovie;
 	// execute query inside database
 	$rs = mysql_query($dbQueryMovie, $link) or die(mysql_error());
@@ -111,12 +129,12 @@
 	if($num_rows != 0)
 	{
 		echo "<div>";
-		echo "<p>Matching movies:</p>" ;
+		echo "<h4>Matching movies:</h4>" ;
 				
-		echo "<table border=1 ><tr>" ;
+		echo "<table border=1 class = 'table table-hover'><tr>" ;
 
 		// echo header fields
-
+		echo "<thead class='thead-dark'>";
 		for ($x = 0; $x < 2; $x++) {
 			if($x == 0)
 				echo '<th>' , "Title" , '</th>';
@@ -125,7 +143,7 @@
 		}
 
 		echo "</tr>" ;
-
+		echo "</thead>";
 		while($row = mysql_fetch_row($rs)){
 
 			echo '<tr>';

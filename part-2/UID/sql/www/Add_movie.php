@@ -1,9 +1,10 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
-
+<br>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h3>Add new Movie</h3>
+    <h3><b>Add new Movie:</b></h3>
+	<hr>
     <form method="GET" action="Add_movie.php">
 	   <div class="form-group">
 		<label for="title">Title:</label>
@@ -50,7 +51,7 @@
 		  <input type="checkbox" name="genre[]" value="War">War</input>
 		  <input type="checkbox" name="genre[]" value="Western">Western</input>
 	   </div>
-	   <button type="submit" class="btn btn-default">Add!</button>
+	   <button type="submit" class="btn btn-secondary">Add!</button>
     </form>
 
 

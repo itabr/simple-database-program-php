@@ -1,15 +1,15 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
-
+<br>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
- <h3><b> Actor Information Page :</b></h3>
+ <h3><b> Actor Information Page:</b></h3>
 <hr>
-   <hr>
-  <label for="search_input">Search:</label>
+   <h4>
+  <label for="search_input">Search:</label></h4>
  <form class="form-group" action="search.php" method ="GET" id="usrform">
      <input type="text" id="search_input"class="form-control" placeholder="Search..." name="result"><br>
-     <input type="submit" value="Click Me!" class="btn btn-default" style="margin-bottom:10px">
+     <input type="submit" value="Click Me!" class="btn btn-secondary" style="margin-bottom:10px">
  </form>
 <?php
 
@@ -37,12 +37,12 @@ $num_rows = mysql_num_rows($rs);
 if($num_rows != 0)
 {
 	echo "<div>";
-	echo "<p>Actor Information:</p>" ;
+	echo "<h4>Actor Information:</h4>" ;
 
-	echo "<table border=1 ><tr>" ;
+	echo "<table border=1 class = 'table table-hover'><tr>" ;
 
 	// echo header fields
-
+	echo "<thead class='thead-dark'>";
 	for ($x = 0; $x < 3; $x++) {
 		if($x == 0)
 			echo '<th>' , "Name" , '</th>';
@@ -53,7 +53,7 @@ if($num_rows != 0)
 	}
 
 	echo "</tr>";
-
+	echo "</thead>";
 	while($row = mysql_fetch_row($rs)){
 
 		echo '<tr>';
@@ -85,12 +85,12 @@ $num_rows = mysql_num_rows($rs);
 if($num_rows != 0)
 {
 	echo "<div>";
-	echo "<p>Actor's Movies and Role:</p>" ;
+	echo "<h4>Actor's Movies and Role:</h4>" ;
 
-	echo "<table border=1 ><tr>" ;
+	echo "<table border=1 class = 'table table-hover'><tr>" ;
 
 	// echo header fields
-
+	echo "<thead class='thead-dark'>";
 	for ($x = 0; $x < 2; $x++) {
 		if($x == 0)
 			echo '<th>' , "Role" , '</th>';
@@ -99,7 +99,7 @@ if($num_rows != 0)
 	}
 
 	echo "</tr>";
-
+	echo "</thead>";
 	while($row = mysql_fetch_row($rs)){
 
 		echo '<tr>';

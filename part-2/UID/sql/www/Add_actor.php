@@ -1,9 +1,9 @@
 <?php
-	include('index.php');
+	include('header.php');
 ?>
-
+<br>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h3>Add new Actor/Director</h3>
+    <h3><b>Add new Actor/Director:</b></h3><hr>
     <form method = "POST" action="#">
 	  <label class="radio-inline">
 		  <input type="radio" checked="checked" name="identity" value="Actor"/>
@@ -34,7 +34,7 @@
 		<label for="DOD">Date of Die</label>
 		<input type="text" class="form-control" placeholder="Text input" name="dated">(leave blank if alive now)<br>
 	   </div>
-	   <button type="submit" class="btn btn-default">Add!</button>
+	   <button type="submit" class="btn btn-secondary">Add!</button>
     </form>
 
 </div>
