@@ -52,13 +52,14 @@
 	//echo $string;
 	//build mysql query for Actor table
 	$dbQueryActor = "SELECT * FROM CS143.Actor WHERE CONCAT(first, last) LIKE " . $string . ";";
-	echo $dbQueryActor;
+	//echo $dbQueryActor;
 	// execute query inside database
 	$rs = mysql_query($dbQueryActor, $link) or die(mysql_error());
 
 	$num_rows = mysql_num_rows($rs);
 	if($num_rows != 0)
 	{
+		echo "<div>";
 		echo "<p>Matching actors:</p>" ;
 
 		echo "<table border=1 ><tr>" ;
@@ -97,16 +98,19 @@
 			echo '</tr>';
 
 		}
+		echo "</table>";
+		echo "</div>";
 	}
 	
 	$dbQueryMovie = "SELECT * FROM CS143.Movie WHERE title LIKE " . $string . ";";
-	echo $dbQueryMovie;
+	//echo $dbQueryMovie;
 	// execute query inside database
 	$rs = mysql_query($dbQueryMovie, $link) or die(mysql_error());
 
 	$num_rows = mysql_num_rows($rs);
 	if($num_rows != 0)
 	{
+		echo "<div>";
 		echo "<p>Matching movies:</p>" ;
 				
 		echo "<table border=1 ><tr>" ;
@@ -135,6 +139,8 @@
 			echo '</tr>';
 
 		}
+		echo "</table>";
+		echo "</div>";
 	}
 
 	}

@@ -40,6 +40,7 @@ if($num_rows != 0)
 {
 while($row = mysql_fetch_row($rs))
 {
+	echo '<a href=Add_Review.php?id=' , $search , '>' , "Add a review for this movie" ,  '</a>';
 	echo "<p>Movie Information:</p>" ;
 
 	echo "<p>" ;
@@ -55,7 +56,7 @@ while($row = mysql_fetch_row($rs))
 }
 }
 
-$dbQueryDirectorInfo = "SELECT * FROM CS143.Director WHERE id = (SELECT did FROM CS143.MovieDirector WHERE mid = " . $search. ");";
+$dbQueryDirectorInfo = "SELECT * FROM CS143.Director WHERE id IN (SELECT did FROM CS143.MovieDirector WHERE mid = " . $search. ");";
 //echo $dbQueryDirectorInfo;
 // execute query inside database
 $rs = mysql_query($dbQueryDirectorInfo, $link) or die(mysql_error());
@@ -125,6 +126,7 @@ while($row = mysql_fetch_row($rs)){
 	echo '</tr>';
 
 }
+echo "</table>";
 }
 
 $dbQueryAverageScore = "SELECT AVG(rating), COUNT(rating) FROM CS143.Review WHERE mid = " . $search. ";";
@@ -149,7 +151,7 @@ $dbQueryMovieReviewInfo = "SELECT * FROM CS143.Review WHERE mid = " . $search . 
 // execute query inside database
 $rs = mysql_query($dbQueryMovieReviewInfo, $link) or die(mysql_error());
 $num_rows = mysql_num_rows($rs);
-if($num_rows != 0)
+if($num_rows != 0  )
 {
 echo "<p>User comments:</p>" ;
 
@@ -189,6 +191,7 @@ while($row = mysql_fetch_row($rs)){
 	echo '</tr>';
 
 }
+echo "</table>";
 }
 mysql_free_result($rs);
 

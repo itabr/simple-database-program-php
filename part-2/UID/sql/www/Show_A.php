@@ -36,6 +36,7 @@ $rs = mysql_query($dbQueryActorInfo, $link) or die(mysql_error());
 $num_rows = mysql_num_rows($rs);
 if($num_rows != 0)
 {
+	echo "<div>";
 	echo "<p>Actor Information:</p>" ;
 
 	echo "<table border=1 ><tr>" ;
@@ -72,6 +73,8 @@ if($num_rows != 0)
 		echo '</tr>';
 
 	}
+	echo "</table>";
+	echo "</div>";
 }
 
 $dbQueryActorMovieInfo = "SELECT DISTINCT title, role, mid FROM CS143.MovieActor, CS143.Movie WHERE mid = CS143.Movie.id AND aid = " . $search . ";";
@@ -81,7 +84,8 @@ $rs = mysql_query($dbQueryActorMovieInfo, $link) or die(mysql_error());
 $num_rows = mysql_num_rows($rs);
 if($num_rows != 0)
 {
-echo "<p>Actor's Movies and Role:</p>" ;
+	echo "<div>";
+	echo "<p>Actor's Movies and Role:</p>" ;
 
 	echo "<table border=1 ><tr>" ;
 
@@ -109,7 +113,8 @@ echo "<p>Actor's Movies and Role:</p>" ;
 		echo '</tr>';
 
 	}
-	
+	echo "</table>";
+	echo "<div>";
 }
 mysql_free_result($rs);
 
